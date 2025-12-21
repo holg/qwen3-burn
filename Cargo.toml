@@ -1,0 +1,41 @@
+[package]
+name = "qwen3-burn"
+version = "0.1.0"
+edition = "2024"
+description = "Qwen3 language model implementation using the Burn deep learning framework"
+license = "MIT OR Apache-2.0"
+keywords = ["qwen", "llm", "transformer", "burn", "deep-learning"]
+categories = ["science", "text-processing"]
+
+[dependencies]
+burn = { git = "https://github.com/tracel-ai/burn.git", features = ["store"] }
+burn-store = { git = "https://github.com/tracel-ai/burn.git", features = ["burnpack", "safetensors"] }
+rootcause = "0.11.0"
+thiserror = "2.0.17"
+tokenizers = "0.21"
+rand = "0.9"
+half = "2.4"
+
+[dev-dependencies]
+burn = { git = "https://github.com/tracel-ai/burn.git", features = ["store", "ndarray", "candle", "candle-metal"] }
+half = "2.4"
+
+[features]
+default = []
+candle = []
+
+[[example]]
+name = "generate"
+path = "examples/generate.rs"
+
+[[example]]
+name = "generate-metal"
+path = "examples/generate-metal.rs"
+
+[[example]]
+name = "convert_to_bpk"
+path = "examples/convert_to_bpk.rs"
+
+[[example]]
+name = "inspect_weights"
+path = "examples/inspect_weights.rs"
